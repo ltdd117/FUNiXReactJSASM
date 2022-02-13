@@ -58,7 +58,7 @@ export const DISHES =
             id: 0,
             rating: 5,
             comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
+            author: "John Lemonn",
             date: "2012-10-16T17:57:28.556094Z"
             },
             {
@@ -104,7 +104,7 @@ export const DISHES =
             id: 0,
             rating: 5,
             comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
+            author: "John Lemonnn",
             date: "2012-10-16T17:57:28.556094Z"
             },
             {
@@ -150,7 +150,7 @@ export const DISHES =
             id: 0,
             rating: 5,
             comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
+            author: "John Lemonnnn",
             date: "2012-10-16T17:57:28.556094Z"
             },
             {

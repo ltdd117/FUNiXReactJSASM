@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle,
     Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import dateFormat from 'dateformat';
 
 function RenderDish({dish}) {
     if (dish != null) {
@@ -22,21 +23,22 @@ function RenderDish({dish}) {
           	<div></div>
         );
 }
-// --Render Comment--
+
 function RenderComments({comments}) {
+    console.log(comments)
     //Get the comments array using props keyword
     if (comments != null) {
         return(
             <div className='col-12 col-md-5 m-1'>
                 <h4>Comments</h4>
                 <ul className='list-unstyled'>
-                        {comments.map((comment) => {
+                        {comments.comments.map((comment) => {
                             return(
                                 <div id={comment.id}>
                                     <li>
                                         <p>{comment.comment}</p>
                                         <p>{comment.rating} stars</p>
-                                        <p>-- {comment.author} , {new Int16Array.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
+                                        <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day:'2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                                     </li>
                                 </div>
                             );
@@ -50,6 +52,7 @@ function RenderComments({comments}) {
             <div></div>
         );
 }
+
 // --Render Dish--
 const DishDetail = (props) => {
     if (props.errMess) {
@@ -75,10 +78,7 @@ const DishDetail = (props) => {
                 </div>
                 <div className="row">
                     <RenderDish dish={props.dish} />
-                    
-                </div>
-                <div className="row">
-                    <RenderComments comments={props.comments} />
+                    <RenderComments comments={props.dish} />
                 </div>
                 
             </div>

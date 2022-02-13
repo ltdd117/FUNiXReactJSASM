@@ -4,6 +4,7 @@ import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import { DISHES } from '../shared/dishes';
 
+
 class Main extends Component {
 
     constructor(props) {
@@ -20,7 +21,6 @@ class Main extends Component {
         this.setState({ comments: dishComments });
     }
 
-
     render() {
 
         return (
@@ -32,7 +32,7 @@ class Main extends Component {
             </Navbar>
             <Menu dishes={this.state.dishes} onClick={(dishId, dishComments) => this.onDishSelect(dishId, dishComments)} />
             <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]}
-                comments={this.state.comments}    />
+                />
         </div>
         );
     }
