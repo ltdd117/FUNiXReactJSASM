@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle,
     Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import dateFormat from 'dateformat';
 
 function RenderDish({dish}) {
     if (dish != null) {
