@@ -24,8 +24,6 @@ function RenderDish({dish}) {
 }
 
 function RenderComments({comments}) {
-    console.log(comments)
-    //Get the comments array using props keyword
     if (comments != null) {
         return(
             <div className='col-12 col-md-5 m-1'>
