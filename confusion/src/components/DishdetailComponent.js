@@ -51,7 +51,7 @@ function RenderComments({comments}) {
 }
 
 // --Render Dish--
-const DishDetail = (props) => {
+function DishDetail (props) {
     if (props.errMess) {
         return(
             <div className="container">

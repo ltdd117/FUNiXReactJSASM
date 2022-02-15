@@ -3,7 +3,6 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem } from 'reac
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
-
     constructor(props) {
         super(props);
 
@@ -11,14 +10,13 @@ class Header extends Component {
         this.state = {
             isNavOpen: false
         };
-    }
+        }
 
-    toggleNav() {
+        toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
-    }
-
+        }
     render() {
         return(
             <React.Fragment>
@@ -44,7 +42,7 @@ class Header extends Component {
                         </Collapse>
                     </div>
                 </Navbar>
-                <div className="container">
+                <div className="container ">
                     <div className="row row-header jumbotron">
                         <div className="col-12 col-sm-6">
                             <h1>Ristorante con Fusion</h1>
