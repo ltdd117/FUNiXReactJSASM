@@ -1,43 +1,25 @@
 import React, { useState } from 'react';
 import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
+import StaffList from './StaffListComponent';
+import StaffDetail from './StaffdetailComponent';
 import { DISHES } from '../shared/dishes';
-import { COMMENTS } from '../shared/comments';
-import { PROMOTIONS } from '../shared/promotions';
-import { LEADERS } from '../shared/leaders';
+import { STAFFS } from '../shared/staffs';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
-import Home from './HomeComponent';
-import About from './AboutComponent';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 
 function Main (props) {
 
     const [dishes, setDishes] = useState(DISHES);
-    const [comments, setComments] = useState(COMMENTS);
-    const [promotions, setPromotions] = useState(PROMOTIONS);
-    const [leaders, setLeaders] = useState(LEADERS);
+    const [staffs, setStaffs] = useState(STAFFS);
 
     
-    const HomePage = () => {
-        return (
-            <Home 
-                dish={dishes.find((dish) => dish.featured)}
-                promotion={promotions.find((promo) => promo.featured)}
-                leader={leaders.find((leader) => leader.featured)}
-            />
-        );
-    }
-
-    
-
-    const DishWithId = (props) => {
-        const { dishId } = useParams();
+    const StaffWithId = (props) => {
+        const { staffId } = useParams();
         
         return(
-            <DishDetail dish={dishes.find((dish) => dish.id === Number(dishId))} 
-                comments={comments.filter((comment) => comment.dishId === Number(dishId))} />
+            <StaffDetail staff={staffs.find((staff) => staff.id === Number(staffId))} />
         );
     };
 
@@ -45,12 +27,11 @@ function Main (props) {
         <div>
             <Header />
             <Routes>
-                <Route path="/home" element={<HomePage />} />
-                <Route path='/aboutus' element={<About leaders={leaders} />} />
+                <Route path="/staffs" element={<StaffList staffs={staffs}/>} />
                 <Route path='/menu' element={<Menu dishes={dishes} />} /> 
-                <Route path="*" element={<Navigate to="/home" />} />
-                <Route path='/contactus' element={<Contact />} />
-                <Route path='/menu/:dishId' element={<DishWithId />} />
+                {/* <Route path="*" element={<Navigate to="/staffs" />} /> */}
+                <Route path='/departments' element={<Contact />} />
+                <Route path='/staffs/:staffId' element={<StaffWithId />} />
             </Routes>
             <Footer />
 
