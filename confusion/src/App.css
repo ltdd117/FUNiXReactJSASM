@@ -1,6 +1,6 @@
 .row-header{
-    margin:0px auto;
-    padding:0px auto;
+    margin-right: -20px;
+    margin-left: -20px;
 }
 
 .row-content {
@@ -15,9 +15,9 @@
     margin:0px auto;
     padding: 20px 0px 20px 0px;
 }
-.jumbotron {
-    padding:70px 30px 70px 30px;
-    margin:0px auto;
+.jumbo {
+    padding: 70px 0px 70px 0px;
+    margin: 0px -30px;
     background: #9575CD ;
     color:floralwhite;
 }
@@ -30,4 +30,25 @@ address{
 
 .navbar-dark {
     background-color: #512DA8;
+}
+
+.box {
+    padding-right: 20px;
+    list-style-type: none;
+}
+
+.nav-link {
+    color: #9575CD ;
+}
+
+.nav-link.active {
+    color:floralwhite;
+    text-decoration: none;
+
+}
+
+.nav-link:hover {
+    color:floralwhite;
+    text-decoration: none;
+
 }
