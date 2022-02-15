@@ -9,6 +9,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
 import Home from './HomeComponent';
+import About from './AboutComponent';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 
 function Main (props) {
@@ -45,6 +46,7 @@ function Main (props) {
             <Header />
             <Routes>
                 <Route path="/home" element={<HomePage />} />
+                <Route path='/aboutus' element={<About leaders={leaders} />} />
                 <Route path='/menu' element={<Menu dishes={dishes} />} /> 
                 <Route path="*" element={<Navigate to="/home" />} />
                 <Route path='/contactus' element={<Contact />} />
