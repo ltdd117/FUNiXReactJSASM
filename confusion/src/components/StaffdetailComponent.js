@@ -8,7 +8,7 @@ import dateFormat from "dateformat";
 function RenderStaff({staff}) {
     if (staff != null) {
         return(
-            <div className='col-25' key={staff.id}>
+            <div className='col-sm-4 col-md-3 m-1' key={staff.id}>
                 <Card>
                     <CardImg top width="100%" src={staff.image} alt={staff.name}/>
                 </Card>
@@ -24,10 +24,10 @@ function RenderStaff({staff}) {
 function RenderInfo({staff}) {
     if (staff != null) {
         return(
-            <div className='col-75' key={staff.id}>
+            <div className='col-sm-8 col-md-9 m-1' key={staff.id}>
                 <Card>
                 <CardBody>
-                        <CardTitle>Họ và tên: {staff.name}</CardTitle>
+                        <CardTitle><strong>Họ và tên: {staff.name}</strong></CardTitle>
                         <CardText>
                             <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
                             <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>

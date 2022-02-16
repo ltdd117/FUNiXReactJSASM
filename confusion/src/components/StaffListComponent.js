@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
@@ -49,13 +49,32 @@ function changeNumOfColumn() {
 
 function StaffList (props) {
 
-    const staffList = props.staffs.map((staff) => {
+    const [searchTerm, setSearchTerm] = useState("");
+    const [sortType, setSortType] = useState("asc");
+
+	const onSort = (type) => {
+		setSortType(type);
+	}
+
+	const sorted = props.staffs.sort( (a, b) => {
+		const isReversed = (sortType === "asc") ? 1 : -1;
+		return isReversed * a.name.localeCompare(b.name)
+	});
+
+    const staffList = sorted.filter((val) => {
+        if (searchTerm == "") {
+            return val
+        } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return val
+        }
+    }).map((staff) => {
         return (
             <div className="col-md-2 col-sm-4 col-xs-6 column" key={staff.id}>
                 <RenderStaffsItem staff={staff}/>
             </div>
         );
     });
+    
 
     return (
         <div className="container">
@@ -65,6 +84,13 @@ function StaffList (props) {
                 </Breadcrumb>
                 <div className='col-12'>
                     <h3>Nhân Viên</h3>
+                    <label>Sắp xếp theo tên: </label>
+                    <button className='button' onClick={() => onSort("asc")}>A-Z</button>
+					<button className='button' onClick={() => onSort("desc")}>Z-A</button>
+                    <form className="right">
+                        <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {setSearchTerm(event.target.value);}}></input>
+                        <button type="button" class="btn btn-search fa fa-search" ></button>
+                    </form>
                     <hr />
                 </div>
             </div>

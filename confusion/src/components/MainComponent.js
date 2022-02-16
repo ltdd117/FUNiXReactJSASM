@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import Menu from './MenuComponent';
+import Payroll from './PayrollComponent';
 import StaffList from './StaffListComponent';
 import StaffDetail from './StaffdetailComponent';
-import { DISHES } from '../shared/dishes';
-import { STAFFS } from '../shared/staffs';
+import { STAFFS, DEPARTMENTS, ROLE } from '../shared/staffs';
+import { LEADERS } from '../shared/leaders';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import Contact from './ContactComponent';
+import About from './AboutComponent';
+import Departments from './DepartmentsComponent';
 import { Routes, Route, Navigate, useParams } from 'react-router-dom';
 
 function Main (props) {
 
-    const [dishes, setDishes] = useState(DISHES);
     const [staffs, setStaffs] = useState(STAFFS);
+    const [departments, setDepartments] = useState(DEPARTMENTS);
+    const [leaders, setLeaders] = useState(LEADERS);
 
     
     const StaffWithId = (props) => {
@@ -27,11 +29,12 @@ function Main (props) {
         <div>
             <Header />
             <Routes>
-                <Route path="/staffs" element={<StaffList staffs={staffs}/>} />
-                <Route path='/menu' element={<Menu dishes={dishes} />} /> 
-                {/* <Route path="*" element={<Navigate to="/staffs" />} /> */}
-                <Route path='/departments' element={<Contact />} />
+                <Route path="/staffs" element={<StaffList staffs={staffs} />} />
+                <Route path='/payroll' element={<Payroll staffs={staffs} />} /> 
+                <Route path="*" element={<Navigate to="/staffs" />} />
+                <Route path='/departments' element={<Departments departments={departments} />} />
                 <Route path='/staffs/:staffId' element={<StaffWithId />} />
+                <Route path='/about' element={<About leaders={leaders} />} />
             </Routes>
             <Footer />
 
