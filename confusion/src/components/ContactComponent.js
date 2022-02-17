@@ -36,7 +36,7 @@ function Contact(props) {
                 <div className='col-12 col-md-9'>
                     <h3><strong>Send us your Feedback</strong></h3>
                 </div>
-                <div className='col-12 col-md-9'>
+                <div className='col-12 col-md-9 m-1'>
                     <Form onSubmit={handleSubmit}>
                         <FormGroup row className='space'>
                             <Label htmlFor='firstname' md={2}>First Name</Label>
