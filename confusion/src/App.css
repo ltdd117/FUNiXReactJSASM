@@ -56,3 +56,12 @@ address{
 .justify-center {
     text-align: center;
 }
+
+.space {
+    margin: 0px 0px 10px;
+}
+
+.space-center {
+    text-align: center;
+    padding-left: 25px;
+}
