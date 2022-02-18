@@ -16,9 +16,7 @@
     padding: 20px 0px 20px 0px;
 }
 .jumbo {
-    padding: 70px 0px 70px 0px;
-    margin: 0px -30px;
-    background: #9575CD ;
+    background-color: #9575CD ;
     color:floralwhite;
 }
 
@@ -69,3 +67,4 @@ address{
 .red {
     color: red;
 }
+
