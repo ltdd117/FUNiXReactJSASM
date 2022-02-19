@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Menu from './MenuComponent';
-import DishDetail from './DishdetailComponent';
+import Payroll from './PayrollComponent';
+import StaffList from './StaffListComponent';
+import StaffDetail from './StaffdetailComponent';
+import Departments from './DepartmentsComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import Contact from './ContactComponent';
-import Home from './HomeComponent';
 import About from './AboutComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,9 +12,9 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
     return {
-        dishes: state.dishes,
-        comments: state.comments,
-        promotions: state.promotions,
+        staffs: state.staffs,
+        departments: state.departments,
+        roles: state.roles,
         leaders: state.leaders
     }
 }
@@ -25,20 +25,10 @@ class Main extends Component {
     }
     
     render() {
-        const HomePage = () => {
-            return (
-                <Home 
-                    dish={this.props.dishes.filter((dish) => dish.featured)[0]}
-                    promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
-                    leader={this.props.leaders.filter((leader) => leader.featured)[0]}
-                />
-            );
-        }
 
-        const DishWithId = ({match}) => {
+        const StaffWithId = ({match}) => {
             return(
-                <DishDetail dish={this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
-                    comments={this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+                <StaffDetail staff={this.props.staffs.filter((staff) => staff.id === parseInt(match.params.staffId,10))[0]} />
             );
         }
 
@@ -46,12 +36,12 @@ class Main extends Component {
             <div>
                 <Header />
                 <Switch>
-                    <Route path="/home" component={HomePage} />
-                    <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
-                    <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} /> 
-                    <Route exact path='/contactus' component={Contact} />
-                    <Route path='/menu/:dishId' component={DishWithId} />
-                    <Redirect to="/home" />
+                    <Route exact path="/staffs" component={() => <StaffList staffs={this.props.staffs} />} />
+                    <Route exact path='/about' component={() => <About leaders={this.props.leaders} />} />
+                    <Route exact path='/payroll' component={() => <Payroll staffs={this.props.staffs} />} /> 
+                    <Route exact path='/departments' component={() => <Departments departments={this.props.departments} />} />
+                    <Route path='/staffs/:staffId' component={StaffWithId} />
+                    <Redirect to="/staffs" />
                 </Switch>
                 <Footer />
 

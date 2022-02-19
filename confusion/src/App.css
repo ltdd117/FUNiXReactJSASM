@@ -68,3 +68,42 @@ address{
     color: red;
 }
 
+.right {
+    float: right;
+    text-align: right;
+}
+
+.left {
+    text-decoration: none;
+}
+
+.item {
+    padding: 20px 20px;
+    margin: auto;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.salary {
+    color: crimson;
+}
+
+.button {
+    margin: 0px 5px;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 375px) {  }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
