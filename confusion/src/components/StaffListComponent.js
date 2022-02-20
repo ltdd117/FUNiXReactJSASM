@@ -96,12 +96,12 @@ class StaffList extends Component {
     handleSubmit = (values) =>{
         this.addNewStaff(values);
         this.toggleModal();
-        this.props.staffs.push(newStaff);
+        this.props.staffs.push(Object.assign({}, newStaff));
         console.log('Current State is: ' + JSON.stringify(values));
     }
 
     addNewStaff(values) {
-        newStaff.id = 16;
+        newStaff.id = this.props.staffs.length;
         newStaff.name = values.username;
         newStaff.doB = values.dob;
         newStaff.department.name = values.department;
@@ -240,7 +240,7 @@ class StaffList extends Component {
                             <Label htmlFor="salaryScale" md={4}>Hệ số lương</Label>
                             <Col md={8} className='right'>
                             <Control.text model='.salaryScale' id="salaryScale" name="salaryScale"
-                                className="form-control"
+                                className="form-control" placeholder="1.0 - 3.0"
                                  />
                             </Col>
                         </Row>
@@ -248,7 +248,7 @@ class StaffList extends Component {
                             <Label htmlFor="annualLeave" md={5}>Số ngày nghỉ còn lại</Label>
                             <Col md={7} className='right'>
                             <Control.text model='.annualLeave' id="annualLeave" name="annualLeave"
-                                className="form-control"
+                                className="form-control" placeholder="1.0"
                                  />
                             </Col>
                         </Row>
@@ -256,7 +256,7 @@ class StaffList extends Component {
                             <Label htmlFor="overTime" md={5}>Số ngày đã làm thêm</Label>
                             <Col md={7} className='right'>
                             <Control.text model='.overTime' id="overTime" name="overTime"
-                                className="form-control"
+                                className="form-control" placeholder="1.0"
                                  />
                             </Col>
                         </Row>
