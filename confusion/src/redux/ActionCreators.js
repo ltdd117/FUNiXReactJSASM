@@ -135,7 +135,7 @@ export const departmentStaffsLoading = () => ({
     type: ActionTypes.DEPARTMENTS_LOADING
 });
 
-export const departmentStaffsFailed = (errmess) => ({
+export const staffsSalaryFailed = (errmess) => ({
     type: ActionTypes.DEPARTMENTS_FAILED,
     payload: errmess
 });
