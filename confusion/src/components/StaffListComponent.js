@@ -69,7 +69,6 @@ class StaffList extends Component {
         super(props);
 
         this.state = {
-            id: this.props.staffs.length,
             searchTerm: "",
             sortType: "asc",
             isModalOpen: false,
@@ -119,7 +118,7 @@ class StaffList extends Component {
     handleSubmit({event}) {
         this.addNewStaff();
         this.toggleModal();
-        this.props.staffs.push(newStaff);
+        this.props.staffs.push(Object.assign({}, newStaff));
         console.log('Current State is: ' + JSON.stringify(this.state));
     }
 
@@ -130,7 +129,7 @@ class StaffList extends Component {
     }
 
     addNewStaff() {
-        newStaff.id = this.state.id;
+        newStaff.id = this.props.staffs.length;
         newStaff.name = this.state.username;
         newStaff.doB = this.state.dob;
         newStaff.department.name = this.state.department;

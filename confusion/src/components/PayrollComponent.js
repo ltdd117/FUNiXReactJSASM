@@ -82,13 +82,15 @@ class Payroll extends Component {
 					<label>Sắp xếp theo mức lương: </label>
 					<button className='button' onClick={() => this.onSort("asc")}>Thấp - Cao</button>
 					<button className='button' onClick={() => this.onSort("desc")}>Cao - Thấp</button>
+					<br/>
+					<label>Sắp xếp theo mã nhân viên: </label>
+					<button className='button' onClick={() => this.onSort("tang")}>Tăng</button>
+					<button className='button' onClick={() => this.onSort("giam")}>Giảm</button>
 					<form className="right">
                         <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {this.setState({ searchTerm: event.target.value});}}></input>
                         <button type="button" class="btn btn-search fa fa-search" ></button>
                     </form>
-					<label>Sắp xếp theo mã nhân viên: </label>
-					<button className='button' onClick={() => this.onSort("tang")}>Tăng</button>
-					<button className='button' onClick={() => this.onSort("giam")}>Giảm</button>
+					
 					<hr />
 				</div>
 			</div>
