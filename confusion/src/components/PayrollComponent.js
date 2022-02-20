@@ -43,7 +43,7 @@ class Payroll extends Component {
 
 	render() {
 
-		const sorted = this.props.staffs.sort( (a, b) => {
+		const sorted = this.props.staffs.staffs.sort( (a, b) => {
 			const basicSalary = 3000000;
 			const overTimeSalary = 200000;
 			const salaryA = parseInt(a.salaryScale* basicSalary) + (a.overTime* overTimeSalary);

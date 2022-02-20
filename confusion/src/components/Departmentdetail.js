@@ -1,7 +1,8 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle,
-    Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardImg, CardText, CardTitle, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Fade, Stagger } from 'react-animation-components';
+import { Loading } from './LoadingComponent';
 
 function RenderStaff({staff}) {
     if (staff != null) {
@@ -24,8 +25,7 @@ function formatDate(dateStr) {
     return(part[2].substring(0, 2) + '/' + part[1] + '/' + part[0]);
 }
 
-function RenderInfo({staff, departments}) {
-    const name = departments.find((depart) => depart.id === staff.departmentId).name;
+function RenderInfo({staff, department}) {
 
     if (staff != null) {
         return(
@@ -36,7 +36,7 @@ function RenderInfo({staff, departments}) {
                         <CardText>
                             <p>Ngày sinh: {formatDate(staff.doB)}</p>
                             <p>Ngày vào công ty: {formatDate(staff.startDate)}</p>
-                            <p>Phòng ban: {name}</p>
+                            <p>Phòng ban: {department.name}</p>
                             <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
                             <p>Số ngày đã làm thêm: {staff.overTime}</p>
                         </CardText> 
@@ -51,8 +51,42 @@ function RenderInfo({staff, departments}) {
         );
 }
 
+function StaffList({staffs, department}) {
+    console.log(staffs);
+    const departmentstaffs = staffs.map((staff) => {
+        return (
+            <Fade in key={staff.id}>
+            <div className="row" >
+                <RenderStaff staff={staff} />
+                <RenderInfo staff={staff} department={department}/>
+            </div>
+            </Fade>
+        );
+    });
+    if (staffs.isLoading) {
+        return(
+                <Loading />
+        );
+    }
+    else if (staffs.errMess) {
+        return(
+            <div className="col-12"> 
+                <h4>{staffs.staffs.errMess}</h4>
+            </div>
+        );
+    }
+    else {
+        return (
+            <Media list>
+                <Stagger in>
+                    {departmentstaffs}
+                </Stagger>
+            </Media>
+        );
+    }
+}
 
-const StaffDetail = (props) => {
+const DepartmentDetail = (props) => {
     if (props.errMess) {
         return(
             <div className="container">
@@ -62,22 +96,21 @@ const StaffDetail = (props) => {
             </div>
         );
     }
-    else if (props.staff != null)  {
+    else if (props.staffs != null && props.department != null)  {
         return (
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to={`/staffs`}>Nhân Viên</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
+                        <BreadcrumbItem active><Link to={`/departments`}>Phòng Ban</Link></BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.staff.name}</h3>
+                        <h3>{props.department.name}</h3>
                         <hr />
                     </div>
                 </div>
-                <div className="row">
-                    <RenderStaff staff={props.staff} />
-                    <RenderInfo staff={props.staff} departments={props.departments} />
+                <div>
+                    <StaffList staffs={props.staffs} department={props.department}/>
                 </div>
                 
             </div>
@@ -89,4 +122,4 @@ const StaffDetail = (props) => {
         );
 }
 
-export default StaffDetail;
+export default DepartmentDetail;

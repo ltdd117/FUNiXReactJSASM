@@ -1,11 +1,17 @@
-import {createStore} from 'redux';
-import { Reducer, initialState } from './reducer'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Staffs } from './staffs';
+import { Departments } from './departments';
+import { Leaders } from './leaders';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 export const ConfigureStore = () => {
-    const store = createStore(
-        Reducer, // reducer
-        initialState, // our initialState
+    return createStore(
+        combineReducers({
+            staffs: Staffs,
+            departments: Departments,
+            leaders: Leaders
+        }),
+        applyMiddleware(thunk, logger)
     );
-
-    return store;
 }

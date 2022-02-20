@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem, Form, FormGroup, 
-    Input, Label, Button, Col, ModalHeader, Modal, ModalBody, FormFeedback, Row } from 'reactstrap';
+    Input, Label, Button, Col, ModalHeader, Modal, ModalBody, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 function RenderStaffsItem ({staff}) {
@@ -119,7 +119,7 @@ class StaffList extends Component {
         const maxLength = (len) => (val) => !(val) || (val.length <= len);
         const minLength = (len) => (val) => val && (val.length >= len);
 
-        const sorted = this.props.staffs.sort( (a, b) => {
+        const sorted = this.props.staffs.staffs.sort( (a, b) => {
             const isReversed = (this.state.sortType === "asc") ? 1 : -1;
             return isReversed * a.name.localeCompare(b.name)
         });

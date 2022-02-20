@@ -4,20 +4,24 @@ import { Link } from 'react-router-dom';
 
 function RenderDepartmentItem ({department}) {
 	return (
-		<div className="col-md-4 col-sm-6 m-1 item" key={department.id}>
+		<div className=" item" key={department.id}>
+            <Link to={`/departments/${department.id}`}>
             <Media top heading><h4><strong>{department.name}</strong></h4></Media>
             <Media body className='ml-5'>
                 <Media>Số lượng nhân viên: {department.numberOfStaff}</Media>
             </Media>
+            </Link>
 		</div>
 	);
 }
 
 function Departments(props) {
 
-    const departmentsList = props.departments.map((department) => {
+    const departmentsList = props.departments.departments.map((department) => {
         return (
+            <div className='col-md-4 col-sm-6'>
             <RenderDepartmentItem department={department}/>
+            </div>
         );
     });
 
@@ -41,3 +45,4 @@ function Departments(props) {
 }
 
 export default Departments;
+
