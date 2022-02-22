@@ -1,0 +1,110 @@
+.row-header{
+    margin-right: -20px;
+    margin-left: -20px;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.footer{
+    background-color: #D1C4E9;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+.jumbo {
+    background-color: #9575CD ;
+    color:floralwhite;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+
+.navbar-dark {
+    background-color: #512DA8;
+}
+
+.box {
+    padding-right: 20px;
+    list-style-type: none;
+}
+
+.nav-link {
+    color: #9575CD ;
+}
+
+.nav-link.active {
+    color:floralwhite;
+    text-decoration: none;
+
+}
+
+.nav-link:hover {
+    color:floralwhite;
+    text-decoration: none;
+
+}
+
+.justify-center {
+    text-align: center;
+}
+
+.space {
+    margin: 0px 0px 10px;
+}
+
+.space-center {
+    text-align: center;
+    padding-left: 25px;
+}
+
+.red {
+    color: red;
+}
+
+.right {
+    float: right;
+    text-align: right;
+}
+
+.left {
+    float: left;
+    text-decoration: none;
+}
+
+.item {
+    padding: 20px 20px;
+    margin: auto;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+
+.salary {
+    color: crimson;
+}
+
+.button {
+    margin: 0px 5px;
+}
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 375px) {  }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
