@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Breadcrumb, BreadcrumbItem, CardHeader, CardBody } from 'reactstrap';
+import { Card, Breadcrumb, BreadcrumbItem, CardHeader, CardBody, Media } from 'reactstrap';
+import { FadeTransform } from 'react-animation-components';
 
 function RenderItem ({staff}) {
 
@@ -8,9 +9,10 @@ function RenderItem ({staff}) {
 
 	const overTimeSalary = 200000;
 
-	const salary = parseInt(staff.salaryScale* basicSalary) + (staff.overTime* overTimeSalary);
+	const salary = parseInt(staff.salaryScale* basicSalary, 10) + (staff.overTime* overTimeSalary);
 
 	return (
+		<FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
 		<Card>
 			<CardHeader className='name'>{staff.name}</CardHeader>
 			<CardBody>
@@ -22,6 +24,7 @@ function RenderItem ({staff}) {
 				<hr />
 			</CardBody>
 		</Card>
+		</FadeTransform>
 	);
 }
 
@@ -42,16 +45,11 @@ class Payroll extends Component {
 	}
 
 	render() {
-
-		const sorted = this.props.staffs.staffs.sort( (a, b) => {
-			const basicSalary = 3000000;
-			const overTimeSalary = 200000;
-			const salaryA = parseInt(a.salaryScale* basicSalary) + (a.overTime* overTimeSalary);
-			const salaryB = parseInt(b.salaryScale* basicSalary) + (b.overTime* overTimeSalary);
+		const sorted = this.props.staffsSalary.staffsSalary.sort( (a, b) => {
 	
 			const isReversed = (this.state.sortType === "asc" || this.state.sortType === "tang") ? 1 : -1;
 			if (this.state.sortType === "asc" || this.state.sortType === "desc") {
-				return isReversed * (salaryA - salaryB);
+				return isReversed * (a.salary - b.salary);
 			} else 
 				return isReversed * (a.id - b.id);
 		});
@@ -64,9 +62,13 @@ class Payroll extends Component {
 			}
 		}).map((staff) => {
 			return (
+
 				<div className="col-sm-6 col-md-4" key={staff.id}>
+
 					<RenderItem staff={staff} />
+
 				</div>
+
 			);
 		});
 
@@ -84,7 +86,6 @@ class Payroll extends Component {
 					<button className='button' onClick={() => this.onSort("desc")}>Cao - Thấp</button>
 					<form className="right">
                         <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {this.setState({ searchTerm: event.target.value});}}></input>
-                        <button type="button" class="btn btn-search fa fa-search" ></button>
                     </form>
 					<label>Sắp xếp theo mã nhân viên: </label>
 					<button className='button' onClick={() => this.onSort("tang")}>Tăng</button>
@@ -92,7 +93,7 @@ class Payroll extends Component {
 					<hr />
 				</div>
 			</div>
-			<div className="row">
+			<div className='row'>
 				{payroll}
 			</div>
 		</div>

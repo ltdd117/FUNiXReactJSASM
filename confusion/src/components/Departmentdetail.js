@@ -1,8 +1,7 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardImg, CardText, CardTitle, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardImg, CardTitle, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Fade, Stagger } from 'react-animation-components';
-import { Loading } from './LoadingComponent';
 
 function RenderStaff({staff}) {
     if (staff != null) {
@@ -33,13 +32,11 @@ function RenderInfo({staff, department}) {
                 <Card>
                 <CardBody>
                         <CardTitle><strong>Họ và tên: {staff.name}</strong></CardTitle>
-                        <CardText>
                             <p>Ngày sinh: {formatDate(staff.doB)}</p>
                             <p>Ngày vào công ty: {formatDate(staff.startDate)}</p>
                             <p>Phòng ban: {department.name}</p>
                             <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
                             <p>Số ngày đã làm thêm: {staff.overTime}</p>
-                        </CardText> 
                     </CardBody>
                 </Card>
             </div>
@@ -52,7 +49,6 @@ function RenderInfo({staff, department}) {
 }
 
 function StaffList({staffs, department}) {
-    console.log(staffs);
     const departmentstaffs = staffs.map((staff) => {
         return (
             <Fade in key={staff.id}>
@@ -63,27 +59,15 @@ function StaffList({staffs, department}) {
             </Fade>
         );
     });
-    if (staffs.isLoading) {
-        return(
-                <Loading />
-        );
-    }
-    else if (staffs.errMess) {
-        return(
-            <div className="col-12"> 
-                <h4>{staffs.staffs.errMess}</h4>
-            </div>
-        );
-    }
-    else {
-        return (
-            <Media list>
-                <Stagger in>
-                    {departmentstaffs}
-                </Stagger>
-            </Media>
-        );
-    }
+    
+    return (
+        <Media list>
+            <Stagger in>
+                {departmentstaffs}
+            </Stagger>
+        </Media>
+    );
+    
 }
 
 const DepartmentDetail = (props) => {

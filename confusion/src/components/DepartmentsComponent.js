@@ -19,7 +19,7 @@ function Departments(props) {
 
     const departmentsList = props.departments.departments.map((department) => {
         return (
-            <div className='col-md-4 col-sm-6'>
+            <div className='col-md-4 col-sm-6' key={department.id}>
             <RenderDepartmentItem department={department}/>
             </div>
         );

@@ -74,6 +74,7 @@ address{
 }
 
 .left {
+    float: left;
     text-decoration: none;
 }
 
