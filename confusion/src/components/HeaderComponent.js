@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem,
     Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label, Jumbotron } from 'reactstrap';
+    Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -90,7 +90,7 @@ class Header extends Component {
                         </Collapse>
                     </div>
                 </Navbar>
-                <Jumbotron>
+                <div className='jumbo'>
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
@@ -99,7 +99,7 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                </Jumbotron>
+                </div>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} backdrop='static'>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
