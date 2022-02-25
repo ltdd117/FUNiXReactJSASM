@@ -1,4 +1,3 @@
-import { func } from 'prop-types';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Breadcrumb, BreadcrumbItem, CardHeader, CardBody } from 'reactstrap';
@@ -50,10 +49,10 @@ function Payroll (props) {
 	});
 
 	const payroll = sorted.filter((val) => {
-        if (searchTerm == "") {
+        if (searchTerm === "") {
             return val
         } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-            return val
+            return val;
 		}
     }).map((staff) => {
 		return (
@@ -72,18 +71,22 @@ function Payroll (props) {
 				</Breadcrumb>
 				<div className='col-12'>
 					<h3>Bảng Lương</h3>
-					<label>Sắp xếp theo mức lương: </label>
-					<button className='button' onClick={() => onSort("asc")}>Thấp - Cao</button>
-					<button className='button' onClick={() => onSort("desc")}>Cao - Thấp</button>
-					<form className="right">
-                        <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {setSearchTerm(event.target.value);}}></input>
-                        <button type="button" class="btn btn-search fa fa-search" ></button>
-                    </form>
 					<label>Sắp xếp theo mã nhân viên: </label>
 					<button className='button' onClick={() => onSort("tang")}>Tăng</button>
 					<button className='button' onClick={() => onSort("giam")}>Giảm</button>
-					<hr />
 				</div>
+				<div className='col-12'>
+					<label>Sắp xếp theo mức lương: </label>
+					<button className='button' onClick={() => onSort("asc")}>Thấp - Cao</button>
+					<button className='button' onClick={() => onSort("desc")}>Cao - Thấp</button>
+					
+				</div>
+				<div className='col-12'>
+					<form className="right">
+                        <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {setSearchTerm(event.target.value);}}></input>
+                    </form>
+				</div>
+				<hr />
 			</div>
 			<div className="row">
 				{payroll}

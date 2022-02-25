@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function RenderDepartmentItem ({department}) {
 	return (
-		<div className="col-md-4 col-sm-6 m-1 item" key={department.id}>
-            <Media top heading><h4><strong>{department.name}</strong></h4></Media>
+		<div className="col-md-4 col-sm-6 m-1 item">
+            <Media top heading className='head'><strong>{department.name}</strong></Media>
             <Media body className='ml-5'>
                 <Media>Số lượng nhân viên: {department.numberOfStaff}</Media>
             </Media>
@@ -17,7 +17,9 @@ function Departments(props) {
 
     const departmentsList = props.departments.map((department) => {
         return (
-            <RenderDepartmentItem department={department}/>
+            <div key={department.id}>
+                <RenderDepartmentItem department={department}/>
+            </div>
         );
     });
 

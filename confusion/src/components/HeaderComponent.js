@@ -21,10 +21,10 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-                <Navbar dark expand="md">
+                <Navbar dark expand="md" color="faded">
                     <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
+                        <NavbarToggler onClick={this.toggleNav} className=''/>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar>
                             <NavItem className="box">
@@ -41,10 +41,12 @@ class Header extends Component {
                         </Collapse>
                     </div>
                 </Navbar>
-                <div className="container">
-                    <div className="row row-header jumbo">
-                        <div className="col-12 col-sm-6 ">
-                            <h1>Ứng dụng quản lý nhân sự v1.1</h1>
+                <div className="jumbo">
+                    <div className="container">
+                        <div className="row row-header">
+                            <div className="col-12 col-sm-6 ">
+                                <h1>Ứng dụng quản lý nhân sự v1.1</h1>
+                            </div>
                         </div>
                     </div>
                 </div>

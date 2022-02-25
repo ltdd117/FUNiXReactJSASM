@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle,
+import { Card, CardImg, CardBody, CardTitle,
     Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import dateFormat from "dateformat";
@@ -27,14 +27,13 @@ function RenderInfo({staff}) {
             <div className='col-sm-8 col-md-9 m-1' key={staff.id}>
                 <Card>
                 <CardBody>
-                        <CardTitle><strong>Họ và tên: {staff.name}</strong></CardTitle>
-                        <CardText>
+                        <CardTitle className='head'><strong>Họ và tên: {staff.name}</strong></CardTitle>
+                            <br/>
                             <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
                             <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
                             <p>Phòng ban: {staff.department.name}</p>
                             <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
                             <p>Số ngày đã làm thêm: {staff.overTime}</p>
-                        </CardText> 
                     </CardBody>
                 </Card>
             </div>

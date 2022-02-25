@@ -6,8 +6,8 @@ function RenderStaffsItem ({staff}) {
 	return (
 		<Card >
 			<Link to={`/staffs/${staff.id}`}>
-			<CardImg src={staff.image} alt={staff.name} />
-                <CardTitle className="left">&ensp;{staff.name}</CardTitle>
+			<CardImg width='100%' src={staff.image} alt={staff.name} />
+                <CardTitle className="justify-center">{staff.name}</CardTitle>
 			</Link>
 		</Card>
 	);
@@ -16,31 +16,31 @@ function RenderStaffsItem ({staff}) {
 function changeNumOfColumn() {
     let elements = document.getElementsByClassName("column");
 
-    if (document.getElementById("quantity").value == 1) {
+    if (parseInt(document.getElementById("quantity").value, 10) === 1) {
         for (let value of elements) {
             value.className = "col-md-12 col-sm-12 col-xs-6 column";
         }
     }
 
-    if (document.getElementById("quantity").value == 2) {
+    if (parseInt(document.getElementById("quantity").value, 10) === 2) {
         for (let value of elements) {
             value.className = "col-md-6 col-sm-6 col-xs-6 column";
         }
     }
 
-    if (document.getElementById("quantity").value == 3) {
+    if (parseInt(document.getElementById("quantity").value, 10) === 3) {
         for (let value of elements) {
             value.className = "col-md-4 col-sm-4 col-xs-6 column";
         }
     }
 
-    if (document.getElementById("quantity").value == 4) {
+    if (parseInt(document.getElementById("quantity").value, 10) === 4) {
         for (let value of elements) {
             value.className = "col-md-3 col-sm-3 col-xs-6 column";
         }
     }
 
-    if (document.getElementById("quantity").value == 6) {
+    if (parseInt(document.getElementById("quantity").value, 10) === 6) {
         for (let value of elements) {
             value.className = "col-md-2 col-sm-2 col-xs-6 column";
         }
@@ -62,10 +62,10 @@ function StaffList (props) {
 	});
 
     const staffList = sorted.filter((val) => {
-        if (searchTerm == "") {
+        if (searchTerm === "") {
             return val
         } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-            return val
+            return val;
         }
     }).map((staff) => {
         return (
@@ -89,7 +89,6 @@ function StaffList (props) {
 					<button className='button' onClick={() => onSort("desc")}>Z-A</button>
                     <form className="right">
                         <input type="text" name="search" id="search" placeholder="Search" onChange={(event) => {setSearchTerm(event.target.value);}}></input>
-                        <button type="button" class="btn btn-search fa fa-search" ></button>
                     </form>
                     <hr />
                 </div>
@@ -101,7 +100,7 @@ function StaffList (props) {
             <div className="row">
                 <em>*Bấm vào tên nhân viên để xem thông tin.</em>
                 <form className="right">
-                    <label for="quantity">Số cột hiển thị (1-6):</label>
+                    <label>Số cột hiển thị (1-6):</label>
                     <input type="number" id="quantity" name="quantity" min="1" max="6"></input>
                     <button type="button" onClick={changeNumOfColumn}>OK</button>
                 </form>
