@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem, Form, FormGroup, 
+import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem, Form, 
     Input, Label, Button, Col, ModalHeader, Modal, ModalBody, Row } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
@@ -107,7 +107,7 @@ class StaffList extends Component {
 
     handleUpdate = (values) => {
         this.toggleModalUpdate();
-        const staffUpdate = new Object;
+        const staffUpdate = new Object();
         staffUpdate.id = values.id;
         staffUpdate.name = values.username;
         staffUpdate.doB = values.dob;
