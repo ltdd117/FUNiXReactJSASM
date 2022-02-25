@@ -107,12 +107,13 @@ class StaffList extends Component {
 
     handleUpdate = (values) => {
         this.toggleModalUpdate();
-        const staffUpdate = new Object();
-        staffUpdate.id = values.id;
-        staffUpdate.name = values.username;
-        staffUpdate.doB = values.dob;
-        staffUpdate.startDate = values.startDate;
-        staffUpdate.image = '/asset/images/alberto.png';
+        const staffUpdate = {
+            id: values.id,
+            name: values.username,
+            doB: values.dob,
+            startDate: values.startDate,
+            image: '/asset/images/alberto.png',
+        };
         if (values.salaryScale) staffUpdate.salaryScale = values.salaryScale;
         if (values.annualLeave) staffUpdate.annualLeave = values.annualLeave;
         if (values.overTime) staffUpdate.overTime = values.overTime;
