@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Breadcrumb, BreadcrumbItem, CardHeader, CardBody, Media } from 'reactstrap';
+import { Card, Breadcrumb, BreadcrumbItem, CardHeader, CardBody } from 'reactstrap';
 import { FadeTransform } from 'react-animation-components';
 
 function RenderItem ({staff}) {
